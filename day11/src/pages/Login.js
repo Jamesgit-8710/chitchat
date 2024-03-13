@@ -5,6 +5,7 @@ import { auth, db, provider } from "../services/user.auth";
 import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router";
 import google from "../assets/google.png";
+import chat from '../assets/chat.jpg'
 import {
   collection,
   addDoc,
@@ -30,9 +31,9 @@ function Login() {
     messageApi.info("Try again!");
   };
 
-  const onFinish = (value) => {};
+  const onFinish = (value) => { };
 
-  const onFinishFailed = (errorInfo) => {};
+  const onFinishFailed = (errorInfo) => { };
 
   const signIn = async () => {
     await signInWithPopup(auth, provider)
@@ -57,11 +58,11 @@ function Login() {
               typing: false,
               typingFor: ""
             });
-          }else{
-            
+          } else {
+
             let i = "";
             querySnapshot.forEach((doc) => {
-              i=doc.id;
+              i = doc.id;
             });
 
             const Ref = doc(db, "users", i);
@@ -86,7 +87,10 @@ function Login() {
     <div className="backGround">
       {contextHolder}
       <div className="innerDiv">
-        <p>Sign in </p>
+        <div style={{height: "300px",backgroundColor: "", backgroundImage: `url(${chat})`,backgroundSize: "contain",backgroundRepeat: "no-repeat", backgroundPosition: "center"}}></div>
+        <h4>Chit Chat</h4>
+        <p style={{fontSize: "0.9rem",color: "#ADB8C8"}}>Where Every Hello Leads to a Thousand Stories👋</p>
+        {/* <p>Sign in </p> */}
         <Form
           name="basic"
           initialValues={{ remember: true }}
@@ -94,7 +98,7 @@ function Login() {
           onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
-          <Form.Item
+          {/*<Form.Item
             style={{ margin: 0, padding: 0 }}
             name="PhoneNumber"
             rules={[
@@ -138,11 +142,11 @@ function Login() {
           </Form.Item>
           <p style={{ marginTop: 38 }}>
             Don't have account? <span style={{ color: "blue" }}>Register</span>
-          </p>
+          </p>*/}
           <h3
-            className="center"
+            className="center cwg"
             onClick={signIn}
-            style={{ marginTop: 33, cursor: "pointer" }}
+            style={{ height: "2.5rem",width: "100%", maxWidth: "16rem",border: "1px solid #adb8c879",borderRadius: "50px",marginLeft: "auto",marginRight: "auto",marginTop: 33, cursor: "pointer" }}
           >
             <img src={google} height={20} style={{ marginRight: 5 }} />
             Continue with Google
